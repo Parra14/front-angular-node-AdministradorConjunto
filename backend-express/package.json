@@ -1,0 +1,19 @@
+{
+  "name": "inmoviliariaapi",
+  "version": "1.0.0",
+  "description": "MEAN API DE UNA INMOVILIARIA - MARCOS DE TRABAJO",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "author": "Grupo Oscar Claudia y Daniel",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3"
+  }
+}
