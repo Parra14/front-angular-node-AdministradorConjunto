@@ -1,4 +1,44 @@
 const Usuario = require("../models/Usuario");
+const jwt = require("jsonwebtoken");
+require("dotenv").config({ path: "variables.env" });
+const {Base64} = require('js-base64');
+
+exports.signup = async (req, res) => {
+    try {
+      let user;
+  
+      //creamos el usuario
+      user = new Usuario(req.body);
+      console.log(user)
+      user.password=Base64.encode(user.password);
+      console.log(user)
+      await user.save();
+      res.send(user);
+  
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("hubo un error :(");
+    }
+  };
+
+  exports.signin = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await Usuario.findOne({ email });
+      let passwordencode=Base64.encode(password);
+      if (!user) return res.status(401).send("El Email no existe");
+      console.log(user)
+      if (user.password !== passwordencode){
+        return res.status(401).send("La contraseña no coincide");}
+  
+      const token = jwt.sign({ _id: user._id, _rol: user.rol, _email: user.email }, process.env.KEYjwt);
+  
+      return res.status(200).json({ token });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("hubo un error :(");
+    }
+  };
 
 exports.crearUsuario = async (req, res) => {
 
@@ -96,7 +136,7 @@ exports.eliminarUsuario = async (req, res) => {
 
         await Usuario.findByIdAndDelete({_id: req.params.id});
 
-        res.json({ msg: 'El producto se elimino correctamente'});
+        res.json({ msg: 'El usuario se elimino correctamente'});
 
 
     }catch(error){
