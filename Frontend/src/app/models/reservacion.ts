@@ -1,18 +1,17 @@
-export class reservacion {
+export class Reservacion {
     _id?:number;
-    brand: string;
+    sitio: string;
+    apto: string;
+    residenteReserva: string;
+    fechaReserva: Date;
 
-    entryDate: Date;
-    lowDate: Date;
-    lastMaintenance: Date;
 
-
-    constructor(brand: string, entryDate: Date, lowDate: Date, lastMaintenance: Date,){
+    constructor(sitio: string, apto: string,  residenteReserva: string, fechaReserva: Date, ){
             
-            this.brand = brand;
-            this.entryDate = entryDate;
-            this.lowDate = lowDate;
-            this.lastMaintenance = lastMaintenance;
+            this.sitio = sitio;
+            this.apto = apto;
+            this.residenteReserva = residenteReserva;
+            this.fechaReserva = fechaReserva;
     }
 
 }
