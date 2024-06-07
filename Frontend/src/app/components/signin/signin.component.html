@@ -1,0 +1,21 @@
+<div class="col-lg-4 offset-lg-4 mx-auto card">     
+    <div class="card-header text-center">
+        <h4>SignIn</h4>
+    </div>
+    <div class="card-body">
+        <form (submit)="signin()">
+            <div class="form-group ">
+                    <input type="email" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group mt-2">
+                    <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block mt-2">Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

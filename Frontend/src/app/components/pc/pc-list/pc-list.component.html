@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row">   
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE PC</span>
+                    <button class="btn btn-success float-end" routerLink="/create-pc">Nuevo</button>
+                    <table *ngIf="listPC.length >0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Serial</th>
+                            <th scope="col">HDD</th>
+                            <th scope="col">*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor ="let pc of listPC">
+                            <td>{{pc.model}}</td>
+                            <td>{{pc.brand}}</td>
+                            <td>{{pc.serial}}</td>
+                            <td>{{pc.hdd}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-pc/', pc._id ]" class="fas fa-pen-to-square text-primary"></i>
+                                <i (click)="eliminarPC(pc._id)" class="fas fa-trash text-danger"></i>
+                                
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     <h5 style="text-align:start; margin-top: 10px " *ngIf="listPC.length ==0" >No hay PC para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

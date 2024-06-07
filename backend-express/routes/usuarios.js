@@ -9,12 +9,12 @@ require("dotenv").config({ path: "variables.env" });
 
 // Api/Usuarios
 
-router.post('/', verifyToken,usuarioController.signup);
-router.get('/', verifyToken,usuarioController.listarUsuarios);
-router.put('/:id', verifyToken,usuarioController.actualizarUsuario);
-router.get('/:id', verifyToken,usuarioController.obtenerUsuario);
-router.delete('/:id', verifyToken,usuarioController.eliminarUsuario);
-router.post("/signin", usuarioController.signin);
+router.post('/crear-usuario/', verifyToken,usuarioController.signup);
+router.get('/listar-usuarios/', verifyToken,usuarioController.listarUsuarios);
+router.put('/actualizar-usuario/:id', verifyToken,usuarioController.actualizarUsuario);
+router.get('/buscar-usuario/:id', verifyToken,usuarioController.obtenerUsuario);
+router.delete('/eliminar-usuario/:id', verifyToken,usuarioController.eliminarUsuario);
+router.post("/signin/", usuarioController.signin);
 
 
 

@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">{{ titulo | uppercase }}</span>
+            <form class="mt-3" [formGroup]="usersForm" (ngSubmit)="agregarUser()">
+              
+              <div class="mb-3">
+                <input type="text" formControlName="name" class="form-control form-control-lg"
+                  placeholder="Nombre">
+                <div class="text-danger"
+                  *ngIf="usersForm.get('name')?.hasError('required') && usersForm.get('name')?.touched">
+                  <span>La Nombre del pc <strong>es Obligatoria</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="lastName" class="form-control form-control-lg" placeholder="Apellidos">
+                <div class="text-danger"
+                  *ngIf="usersForm.get('lastName')?.hasError('required') && usersForm.get('lastName')?.touched">
+                  <span>El Apellido del PC <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              <div>
+                <label>Rol del Usuario:</label>
+                <select class="form-select" formControlName="rol" aria-label="Default select example" placeholder="Apellidos">
+                  <option value="Administrador">Administrador</option>
+                  <option value="Usuario">Usuario</option>
+                </select>
+              </div>
+              <br>
+              <div class="text-danger"
+                  *ngIf="usersForm.get('rol')?.hasError('required') && usersForm.get('rol')?.touched">
+                  <span>El Rol del Usuario <strong>es Obligatorio</strong></span>
+                </div>
+              
+              <div class="mb-3">
+                <input type="email" formControlName="email" class="form-control form-control-lg"
+                  placeholder="Email">
+                <div class="text-danger"
+                  *ngIf="usersForm.get('email')?.hasError('required') && usersForm.get('email')?.touched">
+                  <span>La Email del pc <strong>es Obligatoria</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password">
+                <div class="text-danger"
+                  *ngIf="usersForm.get('password')?.hasError('required') && usersForm.get('password')?.touched">
+                  <span>El Contraseña del pc <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              
+              
+              <div class="mb-3">
+                <button routerLink="/list-users" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                <button type="submit" [disabled]="usersForm.invalid"
+                  class="btn btn-success btn-lg float-end">ACEPTAR</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

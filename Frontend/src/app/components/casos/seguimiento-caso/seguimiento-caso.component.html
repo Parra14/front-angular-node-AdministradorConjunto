@@ -1,0 +1,44 @@
+
+<div class="card">
+    <div class="row caso">
+        
+        <div  > 
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        Id del Caso: {{id}}
+                        <button type="button" (click)="cerrarCaso()"
+                        class="btn btn-warning btn-lg float-end">Cerrar caso</button>
+                    </div>
+                </div>
+                <form class="mt-3" [formGroup]="casosForm" (ngSubmit)="nuevoComentario()">
+                    <div class="card">
+                        <div class="form-floating">
+                            <textarea formControlName="mensaje" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Nuevo Seguimiento</label>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/list-casos" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [disabled]="casosForm.invalid"
+                            class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div> 
+        </div>
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"  tabindex="0">
+            <h4 id="scrollspyHeading1">Trazabilidad</h4>
+            <p>   </p>
+            <div *ngFor="let mensaje of listMensajes">
+                <div class="alert alert-primary" role="alert">
+                {{mensaje.email}}: {{mensaje.mensaje}}
+                </div>
+            </div>
+        
+        </div>
+        
+    </div>
+</div>
+
+
+

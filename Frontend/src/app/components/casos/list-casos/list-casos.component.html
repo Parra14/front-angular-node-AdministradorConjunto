@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="row">   
+      <div class="col-10">
+        <div class="card">
+            <div class="card-body text-center">
+              <span class="titulo">LISTADO DE CASOS</span>
+                    <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
+                    <table *ngIf="listCasos.length >0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Id Caso</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Seguimiento</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor ="let casos of listCasos">
+                            <td><div *ngIf="casos.estado==='ABIERTO';else cerrado"><i class="fa fa-solid fa-circle text-success" title="Caso Abierto"></i></div>
+                            <ng-template #cerrado>
+                              <i class="fa fa-solid fa-circle text-danger" title="Caso Cerrado"></i></ng-template></td>
+                            <td>{{casos._id}}</td>
+                            <td>{{casos.titulo}}</td>
+                            <td>
+                                <i [routerLink]="['/seguimiento-caso', casos._id ]" class="fas fa-solid fa-clipboard"></i>
+                                <i (click)="eliminarCaso(casos._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     <h5 style="text-align:start; margin-top: 10px " *ngIf="listCasos.length ==0" >No hay Casos para mostrar</h5>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Caso</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="" [formGroup]="casosForm" (ngSubmit)="agregarCaso()">
+          <div class="mb-3">
+            <input type="text" formControlName="titulo" class="form-control form-control-lg" placeholder="Titulo del Caso">
+            <div class="text-danger"
+              *ngIf="casosForm.get('titulo')?.hasError('required') && casosForm.get('titulo')?.touched">
+              <span>El Titulo del Caso <strong>es Obligatorio</strong></span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit"  class="btn btn-success " [disabled]="casosForm.invalid" data-bs-dismiss="modal">Save changes</button>
+          </div>
+        </form>
+
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+

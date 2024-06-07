@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">{{ titulo | uppercase }}</span>
+            <form class="mt-3" [formGroup]="peripheralsForm" (ngSubmit)="agregarPeripherals()">
+                
+                <div class="mb-3">
+                    <input type="text" formControlName="brand" class="form-control form-control-lg"
+                      placeholder="Marca">
+                    <div class="text-danger"
+                      *ngIf="peripheralsForm.get('brand')?.hasError('required') && peripheralsForm.get('brand')?.touched">
+                      <span>La Marca del Perisferico <strong>es Obligatoria</strong></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="text" formControlName="model" class="form-control form-control-lg" placeholder="Modelo">
+                    <div class="text-danger"
+                    *ngIf="peripheralsForm.get('model')?.hasError('required') && peripheralsForm.get('model')?.touched">
+                        <span>El model del Perisferico <strong>es Obligatorio</strong></span>
+                    </div>
+                </div>
+              
+                <div class="mb-3">
+                    <input type="text" formControlName="serial" class="form-control form-control-lg"
+                    placeholder="Serial">
+                    <div class="text-danger"
+                    *ngIf="peripheralsForm.get('serial')?.hasError('required') && peripheralsForm.get('serial')?.touched">
+                        <span>La serial del Perisferico <strong>es Obligatoria</strong></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="text" formControlName="periType" class="form-control form-control-lg" placeholder="Tipo de Perisferico">
+                    <div class="text-danger"
+                    *ngIf="peripheralsForm.get('periType')?.hasError('required') && peripheralsForm.get('periType')?.touched">
+                        <span>El Tipo de Perisferico del Perisferico <strong>es Obligatorio</strong></span>
+                    </div>
+                </div>
+              <div class="mb-3">
+                <input type="datetime" formControlName="entryDate" class="form-control form-control-lg" placeholder="Fecha Ingreso dd/mm/aaaa">
+                <div class="text-danger"
+                  *ngIf="peripheralsForm.get('entryDate')?.hasError('required') && peripheralsForm.get('entryDate')?.touched">
+                  <span>El Fecha de Ingreso del Perisferico <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="datetime" formControlName="lowDate" class="form-control form-control-lg" placeholder="Fecha de Baja dd/mm/aaaa o 0 si sigue en uso">
+                <div class="text-danger"
+                  *ngIf="peripheralsForm.get('lowDate')?.touched">
+                  <span>El Fecha de Baja del Perisferico <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button routerLink="/list-peripherals" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                <button type="submit" [disabled]="peripheralsForm.invalid"
+                  class="btn btn-success btn-lg float-end">ACEPTAR</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

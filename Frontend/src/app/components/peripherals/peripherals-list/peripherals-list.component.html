@@ -1,0 +1,38 @@
+
+<div class="container mt-5">
+    <div class="row">   
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE PERISFERICOS</span>
+                    <button class="btn btn-success float-end" routerLink="/create-peripherals">Nuevo</button>
+                    <table *ngIf="listPeripherals.length >0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Serial</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor ="let peripheral of listPeripherals">
+                            <td>{{peripheral.model}}</td>
+                            <td>{{peripheral.brand}}</td>
+                            <td>{{peripheral.serial}}</td>
+                            <td>{{peripheral.periType}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-peripherals/', peripheral._id ]" class="fas fa-pen-to-square text-primary"></i>
+                                <i (click)="eliminarPeripherals(peripheral._id)" class="fas fa-trash text-danger"></i>
+                                
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     <h5 style="text-align:start; margin-top: 10px " *ngIf="listPeripherals.length ==0" >No hay PC para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

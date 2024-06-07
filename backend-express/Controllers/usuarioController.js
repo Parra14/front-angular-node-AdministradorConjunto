@@ -26,6 +26,8 @@ exports.signup = async (req, res) => {
       const { email, password } = req.body;
       const user = await Usuario.findOne({ email });
       let passwordencode=Base64.encode(password);
+      console.log(req.body)
+      console.log(user)
       if (!user) return res.status(401).send("El Email no existe");
       console.log(user)
       if (user.password !== passwordencode){
