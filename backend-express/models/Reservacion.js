@@ -6,7 +6,12 @@ const ReservacionSchema = new Schema(
       type: String,
       required: [true, "Campo requerido"],
       uppercase: true,
-    },  
+    },    
+    apto: {
+        type: String,
+        required: [true, "Campo requerido"],
+        uppercase: true,
+    },   
     residenteReserva: {
       type: String,
       required: [true, "Campo requerido"],
