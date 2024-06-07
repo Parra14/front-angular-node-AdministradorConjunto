@@ -1,1 +1,56 @@
-<p>crear-reservacion works!</p>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">Crear Reservacion</span>
+            <form class="mt-3" [formGroup]="reservacionForm" (ngSubmit)="agregarReservacion()">
+              <div class="mb-3">
+                <input type="text" formControlName="sitio" class="form-control form-control-lg"
+                  placeholder="Lugar">
+                <div class="text-danger"
+                  *ngIf="reservacionForm.get('sitio')?.hasError('required') && reservacionForm.get('sitio')?.touched">
+                  <span>El lugar de la reservacion <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="apto" class="form-control form-control-lg" placeholder="Apartamento del Residente">
+                <div class="text-danger"
+                  *ngIf="reservacionForm.get('apto')?.hasError('required') && reservacionForm.get('apto')?.touched">
+                  <span>El Apartamento del Residente <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <input type="text" formControlName="residenteReserva" class="form-control form-control-lg"
+                  placeholder="Nombre Residente">
+                <div class="text-danger"
+                  *ngIf="reservacionForm.get('residenteReserva')?.hasError('required') && reservacionForm.get('serial')?.touched">
+                  <span>El NOmbre del residente <strong>es Obligatorio</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="fechaReserva" class="form-control form-control-lg" placeholder="Fecha Reserva DD/MM/AAAA">
+                <div class="text-danger"
+                  *ngIf="reservacionForm.get('fechaReserva')?.hasError('required') && reservacionForm.get('fechaReserva')?.touched">
+                  <span>La fecha de la reserva <strong>es Obligatoria</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="horaReserva" class="form-control form-control-lg" placeholder="Hora Reserva HH:MM">
+                <div class="text-danger"
+                  *ngIf="reservacionForm.get('horaReserva')?.hasError('required') && reservacionForm.get('horaReserva')?.touched">
+                  <span>La hora de la reserva<strong>es Obligatoria</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button routerLink="/listar-reservacion" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                <button type="submit" [disabled]="reservacionForm.invalid"
+                  class="btn btn-success btn-lg float-end">ACEPTAR</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
