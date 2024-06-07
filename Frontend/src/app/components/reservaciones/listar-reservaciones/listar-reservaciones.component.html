@@ -1,1 +1,37 @@
-<p>listar-reservaciones works!</p>
+<div class="container mt-5">
+    <div class="row">   
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE RESERVACIONES</span>
+                    <button class="btn btn-success float-end" routerLink="/create-pc">Nuevo</button>
+                    <table *ngIf="listaReservaciones.length >0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Serial</th>
+                            <th scope="col">HDD</th>
+                            <th scope="col">*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor ="let reservacion of listaReservaciones">
+                            <td>{{reservacion.sitio}}</td>
+                            <td>{{reservacion.apto}}</td>
+                            <td>{{reservacion.residenteReserva}}</td>
+                            <td>{{reservacion.fechaReserva}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-pc/', reservacion._id ]" class="fas fa-pen-to-square text-primary"></i>
+                                <i (click)="eliminarPC(reservacion._id)" class="fas fa-trash text-danger"></i>
+                                
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     <h5 style="text-align:start; margin-top: 10px " *ngIf="listaReservaciones.length ==0" >No hay Reservaciones para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
