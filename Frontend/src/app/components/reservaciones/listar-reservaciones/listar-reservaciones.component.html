@@ -8,10 +8,11 @@
                     <table *ngIf="listaReservaciones.length >0" class="table table-striped mt-3">
                         <thead>
                           <tr>
-                            <th scope="col">Modelo</th>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Serial</th>
-                            <th scope="col">HDD</th>
+                            <th scope="col">Lugar</th>
+                            <th scope="col">Apartamento</th>
+                            <th scope="col">Residente</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
                             <th scope="col">*</th>
                           </tr>
                         </thead>
@@ -21,9 +22,10 @@
                             <td>{{reservacion.apto}}</td>
                             <td>{{reservacion.residenteReserva}}</td>
                             <td>{{reservacion.fechaReserva}}</td>
+                            <td>{{reservacion.horaReserva}}</td>
+
                             <td>
-                                <i [routerLink]="['/edit-pc/', reservacion._id ]" class="fas fa-pen-to-square text-primary"></i>
-                                <i (click)="eliminarPC(reservacion._id)" class="fas fa-trash text-danger"></i>
+                                <i (click)="eliminarReservacion(reservacion._id)" class="fas fa-trash text-danger"></i>
                                 
                             </td>
                           </tr>

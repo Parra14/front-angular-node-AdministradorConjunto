@@ -12,22 +12,19 @@ export class reservacionServicesService {
   constructor(private http: HttpClient) { }
 
   getReservacion(): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-pcs');
+    return this.http.get(environment.apiURL + '/get-reservacions');
   }
 
   eliminarReservacion(id: string): Observable<any> {
-    return this.http.delete(environment.apiURL + '/delete-pc/' + id);
+    return this.http.delete(environment.apiURL + '/delete-reservacion/' + id);
   }
 
   guardarReservacion(reservacion: Reservacion): Observable<any> {
-    return this.http.post(environment.apiURL + '/create-pc', reservacion);
+    return this.http.post(environment.apiURL + '/create-reservacion', reservacion);
   }
 
   obtenerReservacion(id: string): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-pcs/' + id);
+    return this.http.get(environment.apiURL + '/get-reservacions/' + id);
   }
 
-  editarReservacion(id: string, reservacion: Reservacion): Observable<any> {
-    return this.http.put(environment.apiURL + '/update-pc/' + id, reservacion);
-  }
 }

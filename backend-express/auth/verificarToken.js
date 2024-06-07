@@ -5,8 +5,8 @@ function verifyToken(req, res, next) {
     if (!req.headers.authorization) {
       return res.status(401).send("Autorizacion denegada** >:(");
     }
-    const token = req.headers.authorization;
-
+    const token = req.headers.authorization.split(" ")[1];
+    console.log(token);
     if (token === "null") {
       return res.status(401).send("Autorizacion denegada** >:(");
     }

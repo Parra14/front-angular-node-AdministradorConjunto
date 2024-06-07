@@ -28,9 +28,9 @@ export class ListarReservacionesComponent implements OnInit {
     
   }
 
-  eliminarPC(id: any){
+  eliminarReservacion(id: any){
     this._reservacionService.eliminarReservacion(id).subscribe(data=>{
-      this.toastr.error('El PC fue eliminado con exito', 'PC Eliminado');
+      this.toastr.error('la Reservacion fue eliminado con exito', 'Reservacio Eliminada');
       this.obtenerReservaciones();
     }, error => {
       console.log(error);

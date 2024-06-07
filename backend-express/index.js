@@ -12,7 +12,7 @@ conectarDB();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', require('./routes/usuarios'));
+app.use('/api', require('./routes/routes'));
 
 app.listen(4000, () => {
     console.log('este servidor esta corriendo prefectamente')
