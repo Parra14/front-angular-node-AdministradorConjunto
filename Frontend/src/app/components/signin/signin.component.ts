@@ -31,7 +31,7 @@ export class SigninComponent implements OnInit {
       res => {
         console.log(res);
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/list-pc']);
+        this.router.navigate(['/listar-reservacion']);
 
     }, err=>{
       this.errores = err.error.errors as string[];
