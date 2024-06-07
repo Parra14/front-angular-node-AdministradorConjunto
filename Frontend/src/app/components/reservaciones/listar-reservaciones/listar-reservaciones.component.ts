@@ -12,4 +12,14 @@ export class ListarReservacionesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  obtenerReservaciones(){
+    this._pcServices.getPC().subscribe(data => {
+      console.log(data);
+      this.listPC = data;
+    }, error => {
+      console.log(error);
+    })
+    
+  }
+
 }
