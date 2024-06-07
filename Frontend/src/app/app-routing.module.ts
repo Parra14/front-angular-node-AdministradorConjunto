@@ -16,7 +16,8 @@ import { UserEditComponent } from './components/users/user-edit/user-edit.compon
 import { ListCasosComponent } from "./components/casos/list-casos/list-casos.component";
 import { CreateCasosComponent } from "./components/casos/create-casos/create-casos.component";
 import { SeguimientoCasoComponent } from "./components/casos/seguimiento-caso/seguimiento-caso.component";
-
+import { ListarReservacionesComponent } from './components/reservaciones/listar-reservaciones/listar-reservaciones.component';
+import { CrearReservacionComponent } from './components/reservaciones/crear-reservacion/crear-reservacion.component';
 
 const routes: Routes = [
 
@@ -37,7 +38,9 @@ const routes: Routes = [
   { path: 'list-casos', component: ListCasosComponent, canActivate: [AuthGuard] },
   { path: 'create-caso', component: CreateCasosComponent, canActivate: [AuthGuard] },
   { path: 'seguimiento-caso/:id', component: SeguimientoCasoComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/list-pc', pathMatch: 'full' },
+  { path: 'listar-reservacion', component: ListarReservacionesComponent, canActivate: [AuthGuard] },
+  { path: 'crear-reservacion', component: CrearReservacionComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/listar-reservacion', pathMatch: 'full' },
 
 ];
 
