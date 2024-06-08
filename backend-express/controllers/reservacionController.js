@@ -1,21 +1,32 @@
 const Reservacion = require("../models/Reservacion");
 
 exports.crearReservacion = async (req, res) => {
-
     try {
+        const { sitio, fechaReserva, horaReserva } = req.body;
 
-        //guardamos el Reservacion que llega en el body en la variable reservacion
+        const [day, month, year] = fechaReserva.split('/');
+        const reservacionFechaHora = new Date(`${year}-${month}-${day}T${horaReserva}`);
+        const now = new Date();
+
+        if (reservacionFechaHora < now) {
+            return res.status(400).send('No se puede realizar una reservación en el pasado.');
+        }
+
+        const existingReservacion = await Reservacion.findOne({ fechaReserva, horaReserva, sitio });
+
+        if (existingReservacion) {
+            return res.status(400).send('El lugar ya está reservado para la fecha y hora seleccionadas.');
+        }
+
         let reservacion = new Reservacion(req.body);
-        //guardamos el Reservacion en la base de datos
         await reservacion.save();
-        //Enviamos resultado del reservacion al usuario que realiza la peticion
         res.send(reservacion);
 
     } catch (error) {
         console.log(error);
-        res.status(500).send('ha ocurrido un error!');
+        res.status(500).send('¡Ha ocurrido un error!');
     }
-}
+};
 
 exports.obtenerReservacions = async (req, res) => {
     try {
